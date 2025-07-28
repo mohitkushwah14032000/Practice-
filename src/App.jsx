@@ -1,12 +1,21 @@
-import React from 'react'
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Home'
-import Counter from './Component/Counter'
-import Asyncawait from './Component/Asyncawait'
-import Todo from './Component/Todo'
-import Crud from './Component/Crud'
-import Apicrud from './Component/Apicrud'
-import Register from './Component/Register'
+import Fetchapi from './Component/Fetchapi'
+import Asyncawait from "./Component/Asyncawait";
+import Counter from "./Component/Counter";
+import Register from "./Component/Register";
+import Loginform from './Component/Loginform';
+import Apicrud from './Component/Apicrud';
+import Todolist from './Component/Todolist';
+import Products from './Products';
+import Services from './Services';
+import Contact from './Contact';
+
+
+
+
+
 
 const App = () => {
   return (
@@ -15,12 +24,16 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={<Home />}></Route>
+          <Route path='fetchapi' element={<Fetchapi />}></Route>
+          <Route path='awaitdata' element={<Asyncawait />}></Route>
           <Route path='counter' element={<Counter />}></Route>
-          <Route path='asyncawait' element={<Asyncawait />}></Route>
-          <Route path='todo' element={<Todo />}></Route>
-          <Route path='crud' element={<Crud />}></Route>
-          <Route path='apicrud' element={<Apicrud />}></Route>
-          <Route path='register' element={<Register/>}></Route>
+          <Route path='register' element={<Register />}></Route>
+          <Route path='login' element={<Loginform />}></Route>
+          <Route path='crud' element={<Apicrud />}></Route>
+          <Route path='list' element={<Todolist />}></Route>
+          <Route path='cardproduct' element={<Products />}></Route>
+          <Route path='servicecard' element={<Services />}></Route>
+          <Route path='contact' element={<Contact />}></Route>
         </Routes>
       </BrowserRouter>
 

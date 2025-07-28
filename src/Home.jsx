@@ -1,45 +1,51 @@
 import React, { useEffect, useState } from 'react'
-import Apriprop from './Component/Apriprop';
-import Static from './Component/Static';
+import Staticprop from './Component/Staticprop'
+import Apiprop from './Component/Apiprop';
+
 
 const Home = () => {
-    const [apidata, setApiData] = useState([]);
+    const [apidata, setApidata] = useState([]);
+    // यह एक static array है जिसमें हर object एक menu item को दर्शाता है।
 
-    const menuItems = [
+    //     हर object में name, Price और icon की जानकारी है।
+
+    const menuitems = [
         { name: "Burger", Price: "Rs.25", icon: "🍔" },
         { name: "Pizza", Price: "Rs.110", icon: "🍕" },
         { name: "Cupcake", Price: "Rs.50", icon: "🧁" },
         { name: "Ice Cream", Price: "Rs.20", icon: "🍦" },
-    ];
+    ]
 
 
+ 
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            .then(data => {
-                setApiData(data);
-                console.log(data);
-            })
+            .then(data => setApidata(data))
+            .catch(error => console.log("Error in Data Fetching", error));
 
-            .catch(error => console.error("error in fetching Data", error));
-    })
+    }, [])
 
 
     return (
-        <div>
+        <div className='w-full bg-white p-4 rounded shadow flex flex-row'>
 
-            <div>
-                {menuItems.map((item, index) => (
-                    <Static key={index} data={item} ></Static>
+            <div className='w-1/3'>
+                {menuitems.map((item, index) => (
+                    <Staticprop key={index} data={{ ...item, name: "mumbai" }}></Staticprop>
                 ))}
             </div>
 
-            <div className="w-1/2 bg-white p-4 rounded shadow">
-                <h3 className="text-[2rem] font-semibold mb-4 text-center">API Props Data</h3>
-                <Apriprop definedata={apidata}></Apriprop>
+            <div className='w-1/3'>
+                <Apiprop userData={apidata} ></Apiprop>
             </div>
+
+           
         </div>
+
+
+
     )
 }
 
